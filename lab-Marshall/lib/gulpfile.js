@@ -1,13 +1,18 @@
 const gulp = require('gulp');
 const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
-const watch = require('gulp-watch');
+// const watch = require('gulp-watch');
 
-var testFiles = ['test/*.js'];
-var appFiles = ['lib/*.js'];
+var testFiles = ['../test/test.js'];
+var appFiles = ['../lib/cowsay.js'];
 
-gulp.task('default', ['lint:app', 'lint:test', 'test', 'watch' ], () => {
+gulp.task('default', ['lint:app', 'lint:test', 'mocha:test', 'watch' ], () => {
   console.log('Gulp is running');
+});
+
+gulp.task('mocha:test', () => {
+  return gulp.src(testFiles, {read: false})
+  .pipe(mocha({reporter: 'nyan'}));
 });
 
 gulp.task('lint:app', () => {
@@ -30,13 +35,7 @@ gulp.task('lint:test', () => {
     .pipe(eslint());
 });
 
-
-gulp.task('test', () => {
-  gulp.src(testFiles)
-    .pipe(mocha());
-});
-
 gulp.task('watch', () => {
   console.log('Watch is running');
-  gulp.watch('./**/*.js', ['lint:app', 'lint:test', 'test']);
+  gulp.watch('./**/*.js', ['lint:app', 'lint:test', 'mocha:test']);
 });
