@@ -63,3 +63,11 @@ Session.vim
 
 # auto-generated tag files
 tags
+
+#my ignores
+.gitignore
+.travis.yml
+.eslintrc
+.README.md
+assets
+script
