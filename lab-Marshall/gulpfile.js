@@ -2,8 +2,8 @@ const gulp = require('gulp');
 const eslint = require('gulp-eslint');
 const mocha = require('gulp-mocha');
 
-var testFiles = ['../test/test.js'];
-var appFiles = ['../lib/**/*.js'];
+var testFiles = ['test/test.js'];
+var appFiles = ['lib/*.js'];
 
 gulp.task('default', ['lint:app', 'lint:test', 'mocha:test', 'watch' ], () => {
   console.log('Watch is running');
