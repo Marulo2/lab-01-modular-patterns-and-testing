@@ -4,7 +4,7 @@ const mocha = require('gulp-mocha');
 // const watch = require('gulp-watch');
 
 var testFiles = ['../test/test.js'];
-var appFiles = ['../lib/cowsay.js'];
+var appFiles = ['../lib/**/*.js'];
 
 gulp.task('default', ['lint:app', 'lint:test', 'mocha:test', 'watch' ], () => {
   console.log('Gulp is running');
@@ -32,7 +32,16 @@ gulp.task('lint:app', () => {
 
 gulp.task('lint:test', () => {
   gulp.src(testFiles)
-    .pipe(eslint());
+    .pipe(eslint({
+      rules : {
+        'indent' : [2,2]
+      },
+      envs: [
+        'node',
+        'es6',
+        'mocha'
+      ]
+    }));
 });
 
 gulp.task('watch', () => {
