@@ -12,3 +12,11 @@ describe('moo function', function() {
     }));
   });
 });
+
+for (var i = 0; i < 1000; i++) {
+  describe('nyan cat test', function() {
+    it('shoulld moo for us', function() {
+      expect('nyan nyan nyan').to.eql('nyan nyan nyan');
+    });
+  });
+}
